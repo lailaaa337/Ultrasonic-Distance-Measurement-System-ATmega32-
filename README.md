@@ -1,37 +1,170 @@
-# Ultrasonic Distance Measurement System (ATmega32)
 
-## Overview
+#  Distance Measurement System using ATmega32 & Ultrasonic Sensor
 
-This project is about building a distance measurement system using an ultrasonic sensor and an ATmega32 microcontroller. The system measures the distance of an object and displays it on an LCD, while LEDs indicate how close the object is.
+##  Overview
+This project implements a **distance measurement system** using an **ATmega32 microcontroller** and an **HC-SR04 ultrasonic sensor**, with real-time output displayed on an **LCD screen**.
 
-## What I did
+The system dynamically responds to distance changes by:
+- Displaying measured distance on LCD  
+- Controlling multiple LEDs based on distance thresholds  
 
-* Connected ultrasonic sensor with ATmega32
-* Used timer and interrupts to calculate distance
-* Displayed distance on LCD
-* Used LEDs to indicate different distance ranges
-* Simulated the circuit using Proteus
-* Implemented the system in embedded C
+This project combines **embedded programming, hardware interfacing, and real-time signal processing**.
 
-## How it works
+> The system was designed, simulated, and implemented based on microcontroller interfacing concepts 
 
-The ultrasonic sensor sends a signal and measures the time it takes to return. The microcontroller calculates the distance and updates the LCD. Based on the distance, LEDs turn on to indicate proximity.
+---
 
-## Project Demo
+##  Features
 
-![Demo](demo.gif)
+-  Real-time distance measurement  
+-  LCD display output (distance in cm)  
+-  LED indicators based on distance levels  
+-  Timer-based signal measurement (Input Capture Unit)  
+-  Continuous real-time updates  
+-  Full hardware implementation  
 
-## Files
+---
 
-* Project report (PDF)
-* Proteus simulation
-* Embedded C code
-* Demo video (converted to GIF)
+##  Project Demo
 
-## Notes
+<p align="center">
+  <img src="demo.gif" alt="Distance Measurement Demo" width="400"/>
+</p>
+<p align="center"><em>Real-time distance measurement displayed on LCD with LED indicators</em></p>
 
-This project helped me understand how microcontrollers interact with sensors and how timing and interrupts are used in real systems.
+---
 
-## Author
+##  System Design
 
-Laila Tarek
+###  Main Components
+
+- **ATmega32 Microcontroller**
+- **HC-SR04 Ultrasonic Sensor**
+- **16x2 LCD Display**
+- **LED Indicators (4 LEDs)**
+- **Potentiometer (for LCD contrast)**
+
+---
+
+###  Sensor Working Principle
+
+- Ultrasonic sensor sends a pulse (Trigger)  
+- Echo signal returns after hitting object  
+- Time difference is measured  
+- Distance is calculated using:
+
+```math
+Distance = \frac{Time × Speed\ of\ Sound}{2}
+````
+
+---
+
+### Microcontroller Logic
+
+* Uses **Timer1 + Input Capture Unit (ICP1)**
+* Measures duration of echo signal
+* Converts time → distance
+
+> As described in the implementation (page 4), the Echo pin is connected to ICP1 for precise timing .
+
+---
+
+###  LED Control Logic
+
+LEDs indicate distance levels:
+
+| Distance Range | LEDs ON |
+| -------------- | ------- |
+| < 5 cm         | 4 LEDs  |
+| < 10 cm        | 3 LEDs  |
+| < 15 cm        | 2 LEDs  |
+| < 20 cm        | 1 LED   |
+
+> This logic is implemented using Port A of the microcontroller .
+
+---
+
+###  LCD Interface
+
+* Data pins connected to **Port C**
+* Control pins connected to **Port D**
+* Displays formatted distance output
+
+---
+
+##  How It Works
+
+1. Trigger pulse is sent to ultrasonic sensor
+2. Echo signal is received
+3. Timer measures signal duration
+4. Distance is calculated
+5. LCD displays distance
+6. LEDs update based on thresholds
+
+---
+
+##  Technologies Used
+
+* **Embedded C (AVR)**
+* **ATmega32 Microcontroller**
+* **Proteus (simulation)**
+* **Hardware (Breadboard Implementation)**
+
+---
+
+##  Project Structure
+
+````
+project/
+│── report.pdf
+│── demo.gif
+│── README.md
+``` id="xq2plg"
+
+---
+
+##  Project Documentation
+
+ Full report available here:  
+[View Report](compOrgProject.pdf)
+
+---
+
+##  What I Learned
+
+- Interfacing sensors with microcontrollers  
+- Using timers and interrupts (ICU)  
+- LCD communication protocols  
+- Embedded C programming  
+- Real-time system design  
+- Debugging hardware circuits  
+
+---
+
+##  Limitations
+
+- Limited measurement range  
+- No filtering for noisy signals  
+- Basic UI  
+
+---
+
+##  Future Improvements
+
+- Add buzzer for alerts  
+- Improve accuracy using filtering  
+- Add wireless monitoring (IoT)  
+- Display graph of distance changes  
+- Use more advanced sensors  
+
+---
+
+##  Author
+
+**Laila Tarek**
+**Miran Samer**
+**Lojaine Mohamed**
+**Hana Mabrouk**
+
+````
+
