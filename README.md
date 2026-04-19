@@ -1,31 +1,25 @@
+# Distance Measurement System using ATmega32 & Ultrasonic Sensor
 
-#  Distance Measurement System using ATmega32 & Ultrasonic Sensor
+## Overview
 
-##  Overview
-This project implements a **distance measurement system** using an **ATmega32 microcontroller** and an **HC-SR04 ultrasonic sensor**, with real-time output displayed on an **LCD screen**.
+This project implements a distance measurement system using an ATmega32 microcontroller and an HC-SR04 ultrasonic sensor, with real-time output displayed on an LCD screen.
 
-The system dynamically responds to distance changes by:
-- Displaying measured distance on LCD  
-- Controlling multiple LEDs based on distance thresholds  
-
-This project combines **embedded programming, hardware interfacing, and real-time signal processing**.
-
-> The system was designed, simulated, and implemented based on microcontroller interfacing concepts 
+The system responds dynamically to distance changes by displaying the measured distance and controlling LEDs based on different distance thresholds. It combines embedded programming, hardware interfacing, and real-time signal processing.
 
 ---
 
-##  Features
+## Features
 
--  Real-time distance measurement  
--  LCD display output (distance in cm)  
--  LED indicators based on distance levels  
--  Timer-based signal measurement (Input Capture Unit)  
--  Continuous real-time updates  
--  Full hardware implementation  
+* Real-time distance measurement
+* LCD display output (distance in cm)
+* LED indicators based on distance levels
+* Timer-based signal measurement (Input Capture Unit)
+* Continuous real-time updates
+* Full hardware implementation
 
 ---
 
-##  Project Demo
+## Project Demo
 
 <p align="center">
   <img src="demo.gif" alt="Distance Measurement Demo" width="400"/>
@@ -34,137 +28,124 @@ This project combines **embedded programming, hardware interfacing, and real-tim
 
 ---
 
-##  System Design
+## System Design
 
-###  Main Components
+### Main Components
 
-- **ATmega32 Microcontroller**
-- **HC-SR04 Ultrasonic Sensor**
-- **16x2 LCD Display**
-- **LED Indicators (4 LEDs)**
-- **Potentiometer (for LCD contrast)**
+* ATmega32 Microcontroller
+* HC-SR04 Ultrasonic Sensor
+* 16x2 LCD Display
+* LED Indicators (4 LEDs)
+* Potentiometer (for LCD contrast)
 
 ---
 
-###  Sensor Working Principle
+### Sensor Working Principle
 
-- Ultrasonic sensor sends a pulse (Trigger)  
-- Echo signal returns after hitting object  
-- Time difference is measured  
-- Distance is calculated using:
+* The ultrasonic sensor sends a trigger pulse
+* The echo signal returns after hitting an object
+* The time difference is measured
+* Distance is calculated using:
 
-```math
-Distance = \frac{Time × Speed\ of\ Sound}{2}
-````
+Distance = (Time × Speed of Sound) / 2
 
 ---
 
 ### Microcontroller Logic
 
-* Uses **Timer1 + Input Capture Unit (ICP1)**
+* Uses Timer1 with Input Capture Unit (ICP1)
 * Measures duration of echo signal
-* Converts time → distance
-
-> As described in the implementation (page 4), the Echo pin is connected to ICP1 for precise timing .
+* Converts time into distance
 
 ---
 
-###  LED Control Logic
+### LED Control Logic
 
 LEDs indicate distance levels:
 
-| Distance Range | LEDs ON |
-| -------------- | ------- |
-| < 5 cm         | 4 LEDs  |
-| < 10 cm        | 3 LEDs  |
-| < 15 cm        | 2 LEDs  |
-| < 20 cm        | 1 LED   |
-
-> This logic is implemented using Port A of the microcontroller .
+* Less than 5 cm → 4 LEDs
+* Less than 10 cm → 3 LEDs
+* Less than 15 cm → 2 LEDs
+* Less than 20 cm → 1 LED
 
 ---
 
-###  LCD Interface
+### LCD Interface
 
-* Data pins connected to **Port C**
-* Control pins connected to **Port D**
-* Displays formatted distance output
+* Data pins connected to Port C
+* Control pins connected to Port D
+* Displays the calculated distance
 
 ---
 
-##  How It Works
+## How It Works
 
-1. Trigger pulse is sent to ultrasonic sensor
-2. Echo signal is received
-3. Timer measures signal duration
+1. A trigger pulse is sent to the ultrasonic sensor
+2. The echo signal is received
+3. Timer measures the signal duration
 4. Distance is calculated
-5. LCD displays distance
-6. LEDs update based on thresholds
+5. LCD displays the result
+6. LEDs update based on distance
 
 ---
 
-##  Technologies Used
+## Technologies Used
 
-* **Embedded C (AVR)**
-* **ATmega32 Microcontroller**
-* **Proteus (simulation)**
-* **Hardware (Breadboard Implementation)**
+* Embedded C (AVR)
+* ATmega32 Microcontroller
+* Proteus (simulation)
+* Hardware (Breadboard implementation)
 
 ---
 
-##  Project Structure
+## Project Structure
 
-````
 project/
-│── report.pdf
+│── compOrgProject.pdf
 │── demo.gif
 │── README.md
-``` id="xq2plg"
 
 ---
 
-##  Project Documentation
+## Project Documentation
 
- Full report available here:  
-[View Report](compOrgProject.pdf)
-
----
-
-##  What I Learned
-
-- Interfacing sensors with microcontrollers  
-- Using timers and interrupts (ICU)  
-- LCD communication protocols  
-- Embedded C programming  
-- Real-time system design  
-- Debugging hardware circuits  
+Full report available here:
+compOrgProject.pdf
 
 ---
 
-##  Limitations
+## What I Learned
 
-- Limited measurement range  
-- No filtering for noisy signals  
-- Basic UI  
-
----
-
-##  Future Improvements
-
-- Add buzzer for alerts  
-- Improve accuracy using filtering  
-- Add wireless monitoring (IoT)  
-- Display graph of distance changes  
-- Use more advanced sensors  
+* Interfacing sensors with microcontrollers
+* Using timers and interrupts (ICU)
+* LCD communication
+* Embedded C programming
+* Real-time system design
+* Debugging hardware circuits
 
 ---
 
-##  Author
+## Limitations
 
-**Laila Tarek**
-**Miran Samer**
-**Lojaine Mohamed**
-**Hana Mabrouk**
+* Limited measurement range
+* No filtering for noisy signals
+* Basic user interface
 
-````
+---
 
+## Future Improvements
+
+* Add buzzer for alerts
+* Improve accuracy using filtering
+* Add wireless monitoring (IoT)
+* Display graphs of distance changes
+* Use more advanced sensors
+
+---
+
+## Author
+
+Laila Tarek
+Miran Samer
+Lojaine Mohamed
+Hana Mabrouk
