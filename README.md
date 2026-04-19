@@ -101,9 +101,9 @@ LEDs indicate distance levels:
 ## Project Structure
 
 project/
-│── compOrgProject.pdf
-│── demo.gif
-│── README.md
+ │── compOrgProject.pdf
+ │── demo.gif
+ │── README.md
 
 ---
 
@@ -145,7 +145,7 @@ compOrgProject.pdf
 
 ## Author
 
-Laila Tarek
-Miran Samer
-Lojaine Mohamed
-Hana Mabrouk
+- Laila Tarek
+- Miran Samer
+- Lojaine Mohamed
+- Hana Mabrouk
